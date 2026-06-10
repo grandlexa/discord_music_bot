@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: trae-music-bot
+    restart: unless-stopped
+    volumes:
+      - ./cookies.txt:/app/cookies.txt
+      - ./bot-log:/app/logs
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Если нужно использовать прокси, раскомментируйте и добавьте в .env
+    # - HTTP_PROXY=${HTTP_PROXY}
+    # - HTTPS_PROXY=${HTTPS_PROXY}
